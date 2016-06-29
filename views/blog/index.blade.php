@@ -33,6 +33,7 @@
 				<div class="btn-more"><a href="{{url('produk')}}">Lihat Semua</a></div>
 			</div>
 			@endif
+			@if(count(vertical_banner()) > 0)
 			<div id="adv-sidebar" class="block">
 				@foreach(vertical_banner() as $banners)
 				<a href="{{url($banners->url)}}">
@@ -40,8 +41,13 @@
 				</a>
 				@endforeach
 			</div>
+			@endif
 		</div>
+		@if(count(list_blog_category()) == 0 && count(best_seller()) == 0 && count(vertical_banner()) == 0)
+		<div id="center_column" class="col-xs-12">
+		@else
 		<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
+		@endif
 			<div class="header-red">Blog</div>
 
 			<div class="product-list col-xs-12">

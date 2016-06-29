@@ -38,7 +38,7 @@
 											@endforeach
 										</ul>
 									@else
-										<p>Belum ada berita terbaru</p>
+										<p><small><i>Belum ada berita terbaru</i></small></p>
 									@endif
 								</div>
 							</div>

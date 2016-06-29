@@ -1215,6 +1215,10 @@ i { font-style: italic; }
 #register-now a { font-size: 15px }
 .slides img { max-width: 1020px }
 input[type="submit"]:hover { background-color: #ccc; color: #fff; }
+article ul { list-style: inside }
+article ol { list-style: numbering; margin-left: 1em }
+article img { display: block; margin-left: auto; margin-right: auto }
+
 
 @media screen and (max-width: 360px){
 	.product-details .btm-details .addtocart {

@@ -59,7 +59,11 @@
 				</div>
 				@endif
 			</div>
+			@if(count(list_category()) == 0 && count(list_koleksi()) == 0 && count(vertical_banner()) == 0)
+			<div id="center_column" class="col-xs-12">
+			@else
 			<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
+			@endif
 				<div class="product-details">
 					<form action="#" id="addorder">
 						<div class="row">

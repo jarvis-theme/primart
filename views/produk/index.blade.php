@@ -71,6 +71,7 @@
 				</ul>
 			</div>
 			@endif
+			@if(count(vertical_banner()) > 0)
 			<div id="adv-sidebar" class="block">
 				@foreach(vertical_banner() as $banners)
 				<a href="{{URL::to($banners->url)}}">
@@ -78,47 +79,52 @@
 				</a>
 				@endforeach
 			</div>
+			@endif
 		</div>
+		@if(count(list_category()) == 0 && count(best_seller()) == 0 && count(list_koleksi()) == 0 && count(vertical_banner()) == 0)
+		<div id="center_column" class="col-xs-12">
+		@else
 		<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
-			<div class="product-list">
-				<div class="row">
-					<ul class="grid">
-					@if(count(list_product(null, @$category, @$collection)) > 0)
-						@foreach(list_product(null, @$category, @$collection) as $produks)
-						<li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
-							<div class="prod-container">
-								<div class="image-container">
-									<a href="{{product_url($produks)}}">
-										{{HTML::image(product_image_url($produks->gambar1,'medium'), $produks->nama, array('class'=>'img-responsive','id'=>'listproduk'))}}
-									</a>
-									@if(is_outstok($produks))
-									<div class="icon-info icon-sold">Sold</div>
-									@elseif(is_terlaris($produks))
-									<div class="icon-info icon-sale">Hot Item</div>
-									@elseif(is_produkbaru($produks))
-									<div class="icon-info icon-new">New</div>
+		@endif
+			@if(count(list_product(null, @$category, @$collection)) > 0)
+				<div class="product-list">
+					<div class="row">
+						<ul class="grid">
+							@foreach(list_product(null, @$category, @$collection) as $produks)
+							<li class="col-xs-6 col-sm-6 col-md-6 col-lg-3">
+								<div class="prod-container">
+									<div class="image-container">
+										<a href="{{product_url($produks)}}">
+											{{HTML::image(product_image_url($produks->gambar1,'medium'), $produks->nama, array('class'=>'img-responsive','id'=>'listproduk'))}}
+										</a>
+										@if(is_outstok($produks))
+										<div class="icon-info icon-sold">Sold</div>
+										@elseif(is_terlaris($produks))
+										<div class="icon-info icon-sale">Hot Item</div>
+										@elseif(is_produkbaru($produks))
+										<div class="icon-info icon-new">New</div>
+										@endif
+									</div>
+									<h5 class="product-name">{{ short_description($produks->nama,26)}}</h5>
+									@if(!empty($produks->hargaCoret))
+									<p class="author"><del>{{price($produks->hargaCoret)}}</del></p>
 									@endif
+									<span class="price">{{price($produks->hargaJual)}}</span>
+									<a href="{{product_url($produks)}}" class="buy-btn">Buy Now</a>
 								</div>
-								<h5 class="product-name">{{ short_description($produks->nama,26)}}</h5>
-								@if(!empty($produks->hargaCoret))
-								<p class="author"><del>{{price($produks->hargaCoret)}}</del></p>
-								@endif
-								<span class="price">{{price($produks->hargaJual)}}</span>
-								<a href="{{product_url($produks)}}" class="buy-btn">Buy Now</a>
-							</div>
-						</li>
-						@endforeach
-					@else
-						<article class="search-result">Produk tidak ditemukan</article>
-					@endif  
-					</ul>
+							</li>
+							@endforeach
+						</ul>
+					</div>
 				</div>
-			</div>
-			<div class="clr"></div>
-			<div class="content_sortPagiBar">
-				{{list_product(null, @$category, @$collection)->links()}}
 				<div class="clr"></div>
-			</div>
+				<div class="content_sortPagiBar">
+					{{list_product(null, @$category, @$collection)->links()}}
+					<div class="clr"></div>
+				</div>
+			@else
+				<article class="search-result"><i>Produk tidak ditemukan</i></article>
+			@endif  
 		</div>
 	</div>
 </div>

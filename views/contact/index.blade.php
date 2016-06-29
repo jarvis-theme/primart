@@ -38,7 +38,11 @@
 			</div>
 			@endif
 		</div>
+		@if(count(best_seller()) == 0 && count(list_blog()) == 0)
+		<div id="center_column" class="col-xs-12">
+		@else
 		<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
+		@endif
 			<div class="header-blue">Hubungi Kami</div>
 			<div class="maps" id="maplocation">
 				@if($kontak->lat!='0' || $kontak->lng!='0')

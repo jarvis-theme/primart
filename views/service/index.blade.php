@@ -25,7 +25,11 @@
 			</div>
 			@endif
 		</div>
+		@if(count(list_blog()) == 0 && count(vertical_banner()) == 0)
+		<div id="center_column" class="col-xs-12">
+		@else
 		<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
+		@endif
 			<div class="header-red"><p>Syarat Dan Ketentuan</p></div>
 			<div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
 				<div class="panel panel-default">

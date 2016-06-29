@@ -74,6 +74,7 @@
 				</ul>
 			</div>
 			@endif
+			@if(count(vertical_banner()) > 0)
 			<div id="adv-sidebar" class="block">
 				@foreach(vertical_banner() as $banners)
 				<a href="{{url($banners->url)}}">
@@ -81,8 +82,13 @@
 				</a>
 				@endforeach
 			</div>
+			@endif
 		</div>
+		@if(count(list_category()) == 0 && count(best_seller()) == 0 && count(list_blog()) == 0 && count(vertical_banner()) == 0)
+		<div id="center_column" class="col-xs-12">
+		@else
 		<div id="center_column" class="col-xs-12 col-sm-8 col-lg-9">
+		@endif
 			<div class="header-green">Hasil Pencarian</div>
 			<div class="product-list">
 				@if($jumlahCari != 0)

@@ -1,6 +1,6 @@
 <div class="container">
 	<div class="inner-column row">
-		<div id="center_column" class="col-lg-9 col-xs-12">
+		<div id="center_column" class="col-xs-12 {{count(vertical_banner()) > 0 ? 'col-lg-9' : ''}}">
 			<div class="header-green">Log in</div>
 			<p>Silahkan Login untuk kemudahan melakukan checkout. Cepat dan Mudah dalam bertransaksi. Mudah untuk mengetahui status dan daftar belanja kamu.</p>
 			<br><br>
